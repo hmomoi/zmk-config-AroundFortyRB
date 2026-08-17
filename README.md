@@ -6,6 +6,13 @@ Around Forty RB の ZMK v0.4（Zephyr 4.1）対応＋**慣性スクロール・�
 
 ---
 
+## 謝辞 (Credits & Respect)
+
+本構成で使用している PMW3610 トラックボールドライバーは、[badjeff/zmk-pmw3610-driver](https://github.com/badjeff/zmk-pmw3610-driver) をベースとしています。
+badjeff 氏は ufan 氏、inorichi 氏および Zephyr 上流の成果を発展させ、ZMK におけるトラックボール統合の強固な基盤（高精度サンプリング・Splitペリフェラル対応・共有SPIバス対応など）を築かれました。badjeff 氏およびオープンソースコミュニティの貢献者の皆様の素晴らしい成果に深く敬意と感謝を申し上げます。
+
+---
+
 ## 主な実装内容・特徴
 
 ### 🟢 最高精度の 1:1 カーソル追従性（通常ポインティング時）
