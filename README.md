@@ -1,4 +1,4 @@
-# zmk-config-AroundFortyRB (dev-0.4)
+# zmk-config-AroundFortyRB (zmk-v0.4)
 
 Around Forty RB の ZMK v0.4（Zephyr 4.1）対応版ファームウェアです。
 
