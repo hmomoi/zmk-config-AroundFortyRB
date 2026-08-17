@@ -1,19 +1,28 @@
-# zmk-config-AroundFortyRB (zmk-v0.4)
+# zmk-config-AroundFortyRB (zmk-v0.4_inertial-scroll)
 
-Around Forty RB の ZMK v0.4（Zephyr 4.1）対応版ファームウェアです。
+Around Forty RB の ZMK v0.4（Zephyr 4.1）対応＋**慣性スクロール・制御Behavior** 搭載版ファームウェアです。
 
-本ブランチは、次期メジャーバージョンである **ZMK v0.4 (Zephyr 4.1)** に先行対応するための開発ブランチです。
+本ブランチは、**ZMK v0.4 (Zephyr 4.1)** 環境において `razilyis/zmk-pmw3610-driver`（`Dev-v0.4_inertial-scroll` ブランチ）を採用し、なめらかな慣性スクロールと各種トグルBehaviorを利用可能にしたブランチです。
 
 ---
 
 ## 主な実装内容・特徴
+
+### 🟢 慣性スクロール & 低速スタビライザー (ZMK v0.4 対応)
+- **自然な慣性スクロール**: レイヤー 6/7 でのスクロール操作時に、指を離した後も心地よい減速を伴う慣性スクロールを実行
+- **ジェスチャー速度正規化**: フリックの勢いを正確に維持しつつ、過剰な暴走を防止
+- **低速カーソル安定化 (`low-speed-stabilizer`)**: 微小な手振れやノイズを相殺し、精密なポインティングを実現
+- **制御Behaviorのサポート**:
+  - `&pmw3610_inertia_toggle`: 慣性スクロールの ON / OFF 切り替え
+  - `&pmw3610_scroll_direction_toggle`: 縦スクロール方向の正転 / 反転切り替え
+  - `&pmw3610_horizontal_scroll_direction_toggle`: 横スクロール方向の正転 / 反転切り替え
 
 ### 🟢 ZMK v0.4 (Zephyr 4.1) への移行
 - **最新 Zephyr 4.1 対応**: ZMK main（Zephyr 4.1 系統）を pin し、新規格に適合
 - **新ボード定義形式への対応**: ボード指定を `xiao_ble//zmk`、インターコネクト ID を `seeed_xiao` に更新
 - **Devicetree での NFC ピン GPIO 化**: Zephyr 4.1 での Kconfig 廃止に伴い、P0.09 / P0.10 の GPIO 再利用指定を DTS（`&uicr`）へ移行
 - **外部モジュールの Zephyr 4.1 追従**:
-  - `badjeff/zmk-pmw3610-driver`: Zephyr 4.1 上流との衝突回避のため `pixart,pmw3610-alt` / `CONFIG_PMW3610_ALT_*` に追従
+  - `razilyis/zmk-pmw3610-driver` (`Dev-v0.4_inertial-scroll`): Zephyr 4.1 上流との衝突回避のため `pixart,pmw3610-alt` / `CONFIG_PMW3610_ALT_*` に完全追従
   - `caksoylar/zmk-rgbled-widget`: Zephyr 4.1 対応版へ更新
 
 ### 🟢 トラックボールおよび BLE 通信の最適化
@@ -25,11 +34,6 @@ Around Forty RB の ZMK v0.4（Zephyr 4.1）対応版ファームウェアです
 
 ### 🟢 全角半角の切り替えマクロ
 - `ime_tog` マクロにより、1 つのキーで日本語入力の全角/半角トグル切り替えが可能
-
----
-
-## 保留事項
-- 🟡 **Prospector Scanner**: Bluetooth 接続の安定性を最優先するため、本ブランチでも非対応としています
 
 ---
 

@@ -87,5 +87,8 @@
         cpi = <400>;
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         force-awake;
+        inertial-scroll;
+        inertial-scroll-layers = <6 7>;
+        low-speed-stabilizer;
     };
 };
