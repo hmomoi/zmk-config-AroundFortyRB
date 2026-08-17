@@ -89,6 +89,5 @@
         force-awake;
         inertial-scroll;
         inertial-scroll-layers = <6 7>;
-        low-speed-stabilizer;
     };
 };
