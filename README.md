@@ -12,7 +12,7 @@ Around Forty RB の ZMK v0.4（Zephyr 4.1）対応＋**慣性スクロール・�
 - **自然な慣性スクロール**: レイヤー 6/7 でのスクロール操作時に、指を離した後も心地よい減速を伴う慣性スクロールを実行
 - **ジェスチャー速度正規化**: フリックの勢いを正確に維持しつつ、過剰な暴走を防止
 - **低速カーソル安定化 (`low-speed-stabilizer`)**: 微小な手振れやノイズを相殺し、精密なポインティングを実現
-- **制御Behaviorのサポート**:
+- **制御Behaviorのサポート (Keymap Editor 対応)**:
   - `&pmw3610_inertia_toggle`: 慣性スクロールの ON / OFF 切り替え
   - `&pmw3610_scroll_direction_toggle`: 縦スクロール方向の正転 / 反転切り替え
   - `&pmw3610_horizontal_scroll_direction_toggle`: 横スクロール方向の正転 / 反転切り替え
