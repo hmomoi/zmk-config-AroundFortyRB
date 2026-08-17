@@ -94,10 +94,10 @@
         Win-Base {
             display-name = "Win-Base";
             bindings = <
-&kp Q             &kp W     &kp E     &kp R                 &kp T                          &kp Y        &kp U        &kp I          &kp O    &kp P
-&kp A             &kp S     &kp D     &kp F                 &kp G                          &kp H        &kp J        &kp K          &kp L    &lt 7 MINUS
-&mt LEFT_SHIFT Z  &kp X     &kp C     &kp V                 &kp B        &ime_tog          &kp N        &kp M        &kp COMMA      &kp DOT  &mt RIGHT_SHIFT SLASH
-&kp LCTRL         &kp LGUI  &kp LALT  &mt LSHFT LANGUAGE_1  &lt 2 SPACE  &lt 6 LANGUAGE_2  &lt 4 ENTER  &kp AT_SIGN  &kp BACKSPACE  &mo 8    &kp DEL
+&kp Q             &kp W     &kp E     &kp R                 &kp T                          &kp Y        &kp U                    &kp I          &kp O    &kp P
+&kp A             &kp S     &kp D     &kp F                 &kp G                          &kp H        &kp J                    &kp K          &kp L    &lt 7 MINUS
+&mt LEFT_SHIFT Z  &kp X     &kp C     &kp V                 &kp B        &ime_tog          &kp N        &kp M                    &kp COMMA      &kp DOT  &mt RIGHT_SHIFT SLASH
+&kp LCTRL         &kp LGUI  &kp LALT  &mt LSHFT LANGUAGE_1  &lt 2 SPACE  &lt 6 LANGUAGE_2  &lt 4 ENTER  &pmw3610_inertia_toggle  &kp BACKSPACE  &mo 8    &kp DEL
             >;
         };
 
@@ -172,10 +172,10 @@
         Settings {
             display-name = "Settings";
             bindings = <
-&trans  &trans  &trans  &trans  &trans         &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-&trans  &trans  &trans  &trans  &trans         &trans        &trans          &trans        &trans        &trans
-&trans  &trans  &trans  &trans  &trans  &to 0  &trans        &trans          &trans        &trans        &bt BT_CLR
-&trans  &trans  &trans  &trans  &trans  &to 1  &sys_reset    &studio_unlock  &bootloader   &trans        &bt BT_CLR_ALL
+&trans  &trans  &trans  &trans  &trans                                              &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+&trans  &trans  &trans  &trans  &trans                                              &trans        &trans          &trans        &trans        &trans
+&trans  &trans  &trans  &trans  &pmw3610_scroll_direction_toggle             &to 0  &trans        &trans          &trans        &trans        &bt BT_CLR
+&trans  &trans  &trans  &trans  &pmw3610_horizontal_scroll_direction_toggle  &to 1  &sys_reset    &studio_unlock  &bootloader   &trans        &bt BT_CLR_ALL
             >;
         };
 
