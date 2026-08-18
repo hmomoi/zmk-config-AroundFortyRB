@@ -1,8 +1,8 @@
-# zmk-config-AroundFortyRB (zmk-v0.4)
+# zmk-config-AroundFortyRB (zmk-v0.4 / DYA Studio)
 
-Around Forty RB の ZMK v0.4（Zephyr 4.1）対応版ファームウェアです。
+Around Forty RB の ZMK v0.4（Zephyr 4.1）および DYA Studio 対応版ファームウェアです。
 
-本ブランチは、次期メジャーバージョンである **ZMK v0.4 (Zephyr 4.1)** に先行対応するための開発ブランチです。
+本ブランチは **ZMK v0.4 (Zephyr 4.1)** をベースに、Custom Studio Protocol によるキーマップ、Macro、Combo、PMW3610、ポインター処理のランタイム設定に対応します。
 
 ---
 
@@ -13,15 +13,20 @@ Around Forty RB の ZMK v0.4（Zephyr 4.1）対応版ファームウェアです
 - **新ボード定義形式への対応**: ボード指定を `xiao_ble//zmk`、インターコネクト ID を `seeed_xiao` に更新
 - **Devicetree での NFC ピン GPIO 化**: Zephyr 4.1 での Kconfig 廃止に伴い、P0.09 / P0.10 の GPIO 再利用指定を DTS（`&uicr`）へ移行
 - **外部モジュールの Zephyr 4.1 追従**:
-  - `badjeff/zmk-pmw3610-driver`: Zephyr 4.1 上流との衝突回避のため `pixart,pmw3610-alt` / `CONFIG_PMW3610_ALT_*` に追従
+  - `cormoran/zmk-driver-pmw3610-with-custom-studio-rpc`: PMW3610 の設定・診断を DYA Studio へ公開
+  - `cormoran/zmk-module-runtime-input-processor`: ポインター、スクロール、回転、反転、一時レイヤーをランタイム設定
   - `caksoylar/zmk-rgbled-widget`: Zephyr 4.1 対応版へ更新
 
 ### 🟢 トラックボールおよび BLE 通信の最適化
 - **トラックボール応答性・復帰速度の改善**: 報告間隔（15ms）の同期および復帰遅延チューニング
 - **BLE スタックメモリ・バッファ最適化**: `CONFIG_BT_HCI_TX_STACK_SIZE_WITH_PROMPT=y` の適用など左右のスタック設定を最適化
 
-### 🟢 ZMK Studio 対応
+### 🟢 DYA Studio 対応
 - `studio-rpc-usb-uart` スニペットを有効化し、USB 接続時のリアルタイムキーマップ編集に対応
+- Runtime Macro / Combo、Fast Keymap、拡張 Physical Layout に対応
+- PMW3610 の CPI・省電力設定と、ポインター／スクロール処理をブラウザから変更可能
+- Studio への書き込みは Settings レイヤーの `&studio_unlock` 実行後だけ許可
+- 押下キーをブラウザへ送る `zmk-feature-input-stream` はプライバシーを考慮して無効
 
 ### 🟢 全角半角の切り替えマクロ
 - `ime_tog` マクロにより、1 つのキーで日本語入力の全角/半角トグル切り替えが可能

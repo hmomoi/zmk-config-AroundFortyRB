@@ -2,6 +2,7 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/input_transform.h>
 #include <input/processors.dtsi>
+#include <input/processors/runtime-input-processor.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 
 &default_transform {
@@ -20,29 +21,51 @@
 
 
 / {
-    /* スクロール方向をいつでも反転できるようにするための設定 */
-    /* 反転させたい場合は compatible を "zmk,input_processor_xy_to_scroll" に変え、*/
-    /* 下の scroll-layer のマッパー参照先を &zip_xy_to_scroll_mapper_tune に変更してください */
-    zip_xy_to_scroll_mapper_tune: zip_xy_to_scroll_mapper_tune {
-        compatible = "zmk,input_processor_xy_to_scroll";
+    /* 現行ファームウェアの X 反転・等倍設定を初期値として引き継ぐ。 */
+    rb_pointer_processor: rb_pointer_processor {
+        compatible = "zmk,input-processor-runtime";
+        processor-label = "pointer";
+        type = <INPUT_EV_REL>;
+        x-codes = <INPUT_REL_X>;
+        y-codes = <INPUT_REL_Y>;
+        scale-multiplier = <1>;
+        scale-divisor = <1>;
+        rotation-degrees = <0>;
+        x-invert;
+        track-remainders;
+
+        /* Studio から有効化した場合は AML (layer 9) を使う。 */
+        temp-layer = <9>;
+        temp-layer-activation-delay-ms = <0>;
+        temp-layer-deactivation-delay-ms = <300>;
+        active-layers = <0>;
         #input-processor-cells = <0>;
-        /* 必要に応じてコメントを外して反転 */
-        // scroll-y-invert;
-        // scroll-x-invert;
+    };
+
+    /* 現行の 1/45 スクロール倍率を初期値として引き継ぐ。 */
+    rb_scroll_processor: rb_scroll_processor {
+        compatible = "zmk,input-processor-runtime";
+        processor-label = "scroll";
+        type = <INPUT_EV_REL>;
+        x-codes = <INPUT_REL_HWHEEL>;
+        y-codes = <INPUT_REL_WHEEL>;
+        scale-multiplier = <1>;
+        scale-divisor = <45>;
+        rotation-degrees = <0>;
+        track-remainders;
+        active-layers = <0>;
+        #input-processor-cells = <0>;
     };
 
     trackball_listener: trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
-                           <&zip_xy_scaler 1 1>;
-                           /* AMLを有効にしたい場合は下のコメントを外してください */
-                           // <&zip_temp_layer 9 300>;
+        input-processors = <&rb_pointer_processor>;
 
         scroll-layer {
             layers = <6 7>;
-            input-processors = <&zip_xy_to_scroll_mapper>, 
-                               <&zip_scroll_scaler 1 45>;
+            input-processors = <&zip_xy_to_scroll_mapper>,
+                               <&rb_scroll_processor>;
         };
     };
 };
@@ -78,7 +101,7 @@
 
     trackball: trackball@0 {
         status = "okay";
-        compatible = "pixart,pmw3610-alt";
+        compatible = "cormoran,pmw3610";
         reg = <0>;
         spi-max-frequency = <2000000>;
         evt-type = <INPUT_EV_REL>;
@@ -86,6 +109,7 @@
         y-input-code = <INPUT_REL_Y>;
         cpi = <400>;
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        settings-id = "trackball";
         force-awake;
     };
 };
