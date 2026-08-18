@@ -65,16 +65,6 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
-
-        // 
-
-        scroll_up_down: behavior_sensor_rotate_mouse_wheel_up_down {
-            compatible = "zmk,behavior-sensor-rotate";
-            #sensor-binding-cells = <0>;
-            bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
-
-            tap-ms = <20>;
-        };
     };
 
     keymap {
@@ -123,20 +113,20 @@
         Win-Common {
             display-name = "Win-Common";
             bindings = <
-&kp ESC    &kp LG(DOWN_ARROW)  &kp LG(UP_ARROW)     &kp LG(LC(UP_ARROW))    &kp LA(UP_ARROW)                        &kp LC(W)          &kp LA(LEFT_ARROW)  &mkp MB3        &kp LA(RIGHT_ARROW)  &kp HOME
-&kp TAB    &kp LEFT_ALT        &kp LS(TAB)          &kp LG(LC(LEFT_ARROW))  &kp LG(LC(RIGHT_ARROW))                 &kp LC(PAGE_UP)    &mkp MB1            &kp UP_ARROW    &mkp MB2             &kp PAGE_UP
-&kp LSHFT  &kp LG(LEFT_ARROW)  &kp LG(RIGHT_ARROW)  &kp LG(LC(F4))          &kp LA(DOWN_ARROW)       &kp LG(LS(S))  &kp LC(PAGE_DOWN)  &kp LEFT_ARROW      &kp DOWN_ARROW  &kp RIGHT_ARROW      &kp PAGE_DOWN
-&kp LCTRL  &trans              &trans               &trans                  &trans                   &trans         &trans             &kp LC(T)           &trans          &trans               &kp END
+&kp ESC    &kp LG(DOWN_ARROW)  &kp LG(UP_ARROW)     &kp LG(LC(D))           &kp LA(UP_ARROW)                                  &kp LC(W)          &kp LA(LEFT_ARROW)  &mkp MB3        &kp LA(RIGHT_ARROW)  &kp HOME
+&kp TAB    &kp LEFT_ALT        &kp LS(TAB)          &kp LG(LC(LEFT_ARROW))  &kp LG(LC(RIGHT_ARROW))                           &kp LC(PAGE_UP)    &mkp MB1            &kp UP_ARROW    &mkp MB2             &kp PAGE_UP
+&kp LSHFT  &kp LG(LEFT_ARROW)  &kp LG(RIGHT_ARROW)  &kp LG(LC(F4))          &kp LA(DOWN_ARROW)       &kp LG(LS(S))            &kp LC(PAGE_DOWN)  &kp LEFT_ARROW      &kp DOWN_ARROW  &kp RIGHT_ARROW      &kp PAGE_DOWN
+&kp LCTRL  &trans              &trans               &trans                  &kp LG(E)                &kp LS(LG(RIGHT_ARROW))  &trans             &kp LC(T)           &trans          &trans               &kp END
             >;
         };
 
         Mac-Common {
             display-name = "Mac-Common";
             bindings = <
-&kp ESC    &trans        &trans       &kp LC(UP_ARROW)    &kp LG(UP_ARROW)                           &kp LG(W)        &kp LG(LEFT_ARROW)  &mkp MB3        &kp LG(RIGHT_ARROW)  &kp HOME
-&kp TAB    &kp LEFT_GUI  &kp LS(TAB)  &kp LC(LEFT_ARROW)  &kp LC(RIGHT_ARROW)                        &kp LC(TAB)      &mkp MB1            &kp UP_ARROW    &mkp MB2             &kp PAGE_UP
-&kp LSHFT  &trans        &trans       &kp LC(DOWN_ARROW)  &kp LG(DOWN_ARROW)   &kp LG(LS(NUMBER_4))  &kp LS(LC(TAB))  &kp LEFT_ARROW      &kp DOWN_ARROW  &kp RIGHT_ARROW      &kp PAGE_DOWN
-&kp LCTRL  &trans        &trans       &trans              &trans               &trans                &trans           &kp LG(T)           &trans          &trans               &kp END
+&kp ESC    &trans        &kp LC(LG(F))  &kp LC(UP_ARROW)    &kp LG(UP_ARROW)                           &kp LG(W)        &kp LG(LEFT_ARROW)  &mkp MB3        &kp LG(RIGHT_ARROW)  &kp HOME
+&kp TAB    &kp LEFT_GUI  &kp LS(TAB)    &kp LC(LEFT_ARROW)  &kp LC(RIGHT_ARROW)                        &kp LC(LS(TAB))  &mkp MB1            &kp UP_ARROW    &mkp MB2             &kp PAGE_UP
+&kp LSHFT  &trans        &trans         &kp LC(DOWN_ARROW)  &kp LG(DOWN_ARROW)   &kp LG(LS(NUMBER_4))  &kp LC(TAB)      &kp LEFT_ARROW      &kp DOWN_ARROW  &kp RIGHT_ARROW      &kp PAGE_DOWN
+&kp LCTRL  &trans        &trans         &trans              &trans               &trans                &trans           &kp LG(T)           &trans          &trans               &kp END
             >;
         };
 
