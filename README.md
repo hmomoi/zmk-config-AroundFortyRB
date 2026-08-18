@@ -25,7 +25,11 @@ Around Forty RB の ZMK v0.4（Zephyr 4.1）および DYA Studio 対応版ファ
 - `studio-rpc-usb-uart` スニペットを有効化し、USB 接続時のリアルタイムキーマップ編集に対応
 - Runtime Macro / Combo、Fast Keymap、拡張 Physical Layout に対応
 - PMW3610 の CPI・省電力設定と、ポインター／スクロール処理をブラウザから変更可能
+- BLEプロファイル管理と、接続先／OSごとの Win-Base・Mac-Base 自動切り替えに対応
+- アイドル／スリープ設定をブラウザから変更可能
+- Device Info、Watchdog incident、左右KSCAN topology／統計の診断に対応
 - Studio への書き込みは Settings レイヤーの `&studio_unlock` 実行後だけ許可
+- Device Info、Watchdog、KSCAN診断もStudio Unlock後だけ参照可能
 - 押下キーをブラウザへ送る `zmk-feature-input-stream` はプライバシーを考慮して無効
 
 ### 🟢 全角半角の切り替えマクロ
